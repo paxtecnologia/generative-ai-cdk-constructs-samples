@@ -1,0 +1,22 @@
+x-environment: &default-environment
+  ENVIRONMENT_ACTIVE: local
+
+services:
+  workspace:
+    image: workspace
+    tty: true
+    build:
+      context: ..
+      dockerfile: .devcontainer/containers/workspace/Dockerfile
+    environment:
+      <<: *default-environment
+    volumes:
+      - ..:/workspace:consistent
+      - ~/.aws:/home/dev-user/.aws:cached
+      - /var/run/docker.sock:/var/run/docker.sock:rw
+    networks:
+      - private-network
+
+networks:
+  private-network:
+    driver: bridge

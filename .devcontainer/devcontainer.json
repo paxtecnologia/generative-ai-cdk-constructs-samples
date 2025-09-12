@@ -1,0 +1,31 @@
+{
+  "name": "generative-ai-cdk-constructs-samples",
+  "service": "workspace",
+  "dockerComposeFile": "docker-compose.yml",
+  "workspaceFolder": "/workspace",
+  "remoteUser": "dev-user",
+  "overrideCommand": true,
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "workbench.colorCustomizations": {
+          "activityBar.background": "#f8aa02cb",
+          "activityBar.activeBackground": "#f8aa02cb",
+          "activityBar.inactiveForeground": "#ffffff",
+          "statusBar.background": "#f8aa02cb",
+          "statusBar.foreground": "#ffffff"
+        }
+      },
+      "extensions": [
+        "ms-azuretools.vscode-docker",
+        "mhutchie.git-graph",
+        "donjayamanne.githistory",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "EditorConfig.EditorConfig",
+        "wayou.vscode-todo-highlight",
+        "mk12.better-git-line-blame",
+      ]
+    }
+  }
+}

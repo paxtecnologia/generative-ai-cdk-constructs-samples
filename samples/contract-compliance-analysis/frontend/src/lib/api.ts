@@ -43,19 +43,26 @@ Amplify.configure({
   },
 });
 
-const authToken = (await fetchAuthSession()).tokens?.idToken?.toString();
+async function getAuthToken() {
+  const session = await fetchAuthSession();
+  return session.tokens?.idToken?.toString();
+}
 
-const defaultRestInput = {
-  apiName: env.VITE_API_NAME,
-  options: {
-    headers: {
-      Authorization: `Bearer ${authToken}`,
+async function getDefaultRestInput() {
+  const authToken = await getAuthToken();
+  return {
+    apiName: env.VITE_API_NAME,
+    options: {
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
     },
-  },
-};
+  };
+}
 
 export async function getJobs() {
   try {
+    const defaultRestInput = await getDefaultRestInput();
     const restOperation = get({
       ...defaultRestInput,
       path: "/jobs",
@@ -69,6 +76,7 @@ export async function getJobs() {
 
 export async function getJob(jobId: string) {
   try {
+    const defaultRestInput = await getDefaultRestInput();
     const restOperation = get({
       ...defaultRestInput,
       path: `/jobs/${jobId}`,
@@ -82,6 +90,7 @@ export async function getJob(jobId: string) {
 
 export async function uploadDocument(file: File | Blob, filename: string) {
   try {
+    const authToken = await getAuthToken();
     const upload = await axios({
       method: "PUT",
       url: `${env.VITE_API_GATEWAY_REST_API_ENDPOINT}/documents/${filename}`,
@@ -100,6 +109,7 @@ export async function uploadDocument(file: File | Blob, filename: string) {
 
 export async function getDocument(filename: string) {
   try {
+    const defaultRestInput = await getDefaultRestInput();
     const restOperation = get({
       ...defaultRestInput,
       path: `/documents/${filename}`,
@@ -113,6 +123,7 @@ export async function getDocument(filename: string) {
 
 export async function createJob(filename: string) {
   try {
+    const defaultRestInput = await getDefaultRestInput();
     const restOperation = post({
       ...defaultRestInput,
       path: `/jobs`,

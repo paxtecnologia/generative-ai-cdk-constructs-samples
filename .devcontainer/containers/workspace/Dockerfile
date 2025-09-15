@@ -13,6 +13,7 @@ RUN apt update -qq \
   curl \
   ca-certificates \
   openssh-client \
+  python3 \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 

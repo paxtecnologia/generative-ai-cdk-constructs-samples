@@ -13,6 +13,7 @@
 
 import os
 import aws_cdk as cdk
+from aws_cdk import Tags
 from cdk_nag import AwsSolutionsChecks
 from stack import BackendStack
 
@@ -27,6 +28,9 @@ stack_name = os.environ.get('STACK_NAME', "MainBackendStack")
 main_backend_stack = BackendStack(
     app, stack_name, description=f'({USAGE_METRIC})(tag:{SOLUTION_NAME})'
 )
+
+# Add tag to all resources
+Tags.of(app).add("pf-lab", "contract-compliance-analysis")
 
 cdk.Aspects.of(app).add(AwsSolutionsChecks())
 

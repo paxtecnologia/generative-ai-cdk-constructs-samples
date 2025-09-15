@@ -44,7 +44,8 @@ RUN apt-get update \
 RUN curl -L https://raw.githubusercontent.com/tj/n/master/bin/n -o n \
   && bash n $NODE_VERSION \
   && rm n \
-  && npm install -g npm
+  && npm install -g npm \
+  && npm install -g aws-cdk
 
 
 

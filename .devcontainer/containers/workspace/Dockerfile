@@ -14,6 +14,7 @@ RUN apt update -qq \
   ca-certificates \
   openssh-client \
   python3 \
+  unzip \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 

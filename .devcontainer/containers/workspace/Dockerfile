@@ -45,7 +45,13 @@ RUN curl -L https://raw.githubusercontent.com/tj/n/master/bin/n -o n \
   && bash n $NODE_VERSION \
   && rm n \
   && npm install -g npm \
-  && npm install -g aws-cdk
+  && npm install -g 
+  
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
+    && unzip awscliv2.zip \
+    && sudo ./aws/install \
+    && rm -rf awscliv2.zip aws
+
 
 
 

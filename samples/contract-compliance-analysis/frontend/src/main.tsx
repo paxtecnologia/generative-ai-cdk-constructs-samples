@@ -39,7 +39,7 @@ const jobListLoader: LoaderFunction = function () {
 
 const jobLoader: LoaderFunction = ({ params }) => {
   return defer({
-    job: getJob(params.jobId),
+    job: getJob(params.jobId || '0'),
   });
 };
 

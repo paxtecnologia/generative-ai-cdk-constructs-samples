@@ -1,4 +1,5 @@
 .aws
+.outputs
 role-auth.sh
 
 **/.env

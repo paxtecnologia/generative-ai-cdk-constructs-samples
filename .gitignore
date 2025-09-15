@@ -1,4 +1,5 @@
 .aws
+role-auth.sh
 
 **/.env
 .idea/

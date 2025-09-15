@@ -16,7 +16,9 @@ RUN apt update -qq \
   python3 \
   python3-pip \
   python3.13-venv \
+  rsync \
   unzip \
+  jq \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
